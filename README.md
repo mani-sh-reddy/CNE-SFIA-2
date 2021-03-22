@@ -23,5 +23,9 @@ Deployment of a simple Flask application, built in Python, that makes use of a m
 - Configure infrastructure using an infrastructure management tool (**Terraform**).
 - Create an **Ansible** Playbook that will provision the environment that the CI Server needs to run.
 - Use a reverse proxy (NGINX) to make the application accessible to the user.
-- Deployment of the application on an **AWS EC2** instance.
+- Deployment on **AWS EC2** instances.
 - Fully integrate into a VCS **Git**.
+
+## Project Planning
+
+## Architecture
