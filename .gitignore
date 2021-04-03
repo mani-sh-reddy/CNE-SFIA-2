@@ -1,3 +1,6 @@
 /venv/
 **/**/__pycache__/
 **/**/.coverage
+
+/GIT_IGNORED
+workspace.code-workspace
