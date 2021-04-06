@@ -26,3 +26,17 @@ resource "aws_subnet" "public_subnet" {
     "Name" = "cne_public_subnet"
   }
 }
+
+resource "aws_subnet" "private_subnet" {
+   vpc_id = aws_vpc.vpc.id
+   cidr_block = var.private_subnet_cidr
+   
+   # map ip is false for private subnet
+   map_public_ip_on_launch = false
+
+   availability_zone = "eu-west-2a"
+
+  tags = {
+    "Name" = "cne_private_subnet"
+  }
+}
