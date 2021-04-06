@@ -28,6 +28,8 @@ module "RT" {
   gateway_id        = module.GATEWAY.gateway_id
   vpc_default_rt_id = module.VPC.vpc_default_rt_id
   public_subnet_id  = module.VPC.public_subnet_id
+  rds_subnet_a_id = module.VPC.rds_subnet_a_id
+  rds_subnet_b_id = module.VPC.rds_subnet_b_id
 }
 
 
@@ -36,5 +38,4 @@ module "SG" {
 
   #accessing the outputs of some modules and sending it to source.
   vpc_id            = module.VPC.vpc_id
-  public_subnet_cidr = var.public_subnet_cidr
 }
