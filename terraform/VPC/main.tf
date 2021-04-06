@@ -13,6 +13,7 @@ resource "aws_vpc" "vpc" {
   }
 }
 
+
 resource "aws_subnet" "public_subnet" {
    vpc_id = aws_vpc.vpc.id
    cidr_block = var.public_subnet_cidr
@@ -27,6 +28,52 @@ resource "aws_subnet" "public_subnet" {
   }
 }
 
+
+# using a public subnet group (and subnets) for the RDSs.
+# RDS1
+resource "aws_subnet" "rds_subnet_a" {
+   vpc_id = aws_vpc.vpc.id
+   cidr_block = var.rds_a_subnet_cidr
+   
+   # to set public ip for instances in this subnet
+   map_public_ip_on_launch = true
+
+   availability_zone = "eu-west-2a"
+
+  tags = {
+    "Name" = "rds_public_subnet_a"
+  }
+}
+
+# RDS2
+resource "aws_subnet" "rds_subnet_b" {
+   vpc_id = aws_vpc.vpc.id
+   cidr_block = var.rds_b_subnet_cidr
+   
+   # to set public ip for instances in this subnet
+   map_public_ip_on_launch = true
+
+   availability_zone = "eu-west-2b"
+
+  tags = {
+    "Name" = "rds_public_subnet_b"
+  }
+}
+
+# RDS modules will refer to the subnet groups (not the subnets itself).
+resource "aws_db_subnet_group" "rds" {
+  name       = "rds"
+  subnet_ids = [aws_subnet.rds_subnet_a.id, aws_subnet.rds_subnet_b.id]
+
+  tags = {
+    Name = "RDS subnet group"
+  }
+}
+
+
+
+
+# not using this subnet due to time and cost constraints - but its here if needed.
 resource "aws_subnet" "private_subnet" {
    vpc_id = aws_vpc.vpc.id
    cidr_block = var.private_subnet_cidr
@@ -40,3 +87,4 @@ resource "aws_subnet" "private_subnet" {
     "Name" = "cne_private_subnet"
   }
 }
+

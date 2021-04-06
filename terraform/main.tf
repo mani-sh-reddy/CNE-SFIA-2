@@ -6,6 +6,8 @@ module "VPC" {
   vpc_cidr            = var.vpc_cidr
   public_subnet_cidr  = var.public_subnet_cidr
   private_subnet_cidr = var.private_subnet_cidr
+  rds_a_subnet_cidr = var.rds_a_subnet_cidr
+  rds_b_subnet_cidr = var.rds_b_subnet_cidr
 }
 
 module "GATEWAY" {

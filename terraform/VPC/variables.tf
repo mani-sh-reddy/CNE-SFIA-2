@@ -12,6 +12,16 @@ variable "public_subnet_cidr" {
   type = string
 }
 
+variable "rds_a_subnet_cidr" {
+  type = string
+}
+
+variable "rds_b_subnet_cidr" {
+  type = string
+}
+
+
+
 variable "private_subnet_cidr" {
   type = string
 }
