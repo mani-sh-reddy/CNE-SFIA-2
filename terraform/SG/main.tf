@@ -1,7 +1,7 @@
 # security group / main
 
-resource "aws_security_group" "cne_security_group" {
-  name = "cne_security_group"
+resource "aws_security_group" "main_public_sg" {
+  name = "main_public_sg"
   description = "security group for 22, 8080, 80 access"
   vpc_id = var.vpc_id
 
@@ -38,5 +38,35 @@ resource "aws_security_group" "cne_security_group" {
   }
 }
 
-# 1. ssh from anywhere in the security group
-# 2. setup vm ip ingress
+# RDS Security group.
+resource "aws_security_group" "rds_sg" {
+  name = "rds_sg"
+  description = "security group for 3306 and 22 ingress"
+  vpc_id = var.vpc_id
+
+  ingress {
+    description = "mysql in"
+    from_port = var.mysql_port
+    to_port = var.mysql_port
+    protocol = "tcp"
+    #only allowing inside vpc ingress
+    cidr_blocks = [var.vpc_cidr_block]
+  }
+
+  ingress {
+    description = "ssh in"
+    from_port = var.ssh_port
+    to_port = var.ssh_port
+    protocol = "tcp"
+    #only allowing inside vpc ingress
+    cidr_blocks = [var.vpc_cidr_block]
+  }
+
+  egress {
+    description = "allow all out"
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = var.all_ip_range
+  }
+}

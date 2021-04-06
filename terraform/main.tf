@@ -35,6 +35,8 @@ module "RT" {
 
 module "SG" {
   source = "./SG"
+  
+  vpc_cidr_block = var.vpc_cidr
 
   #accessing the outputs of some modules and sending it to source.
   vpc_id            = module.VPC.vpc_id
