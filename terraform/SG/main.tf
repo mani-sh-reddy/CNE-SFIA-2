@@ -2,21 +2,29 @@
 
 resource "aws_security_group" "cne_security_group" {
   name = "cne_security_group"
-  description = "security group for 22 and 8080 access"
+  description = "security group for 22, 8080, 80 access"
   vpc_id = var.vpc_id
 
   ingress {
     description = "ssh in"
-    from_port = 22
-    to_port = 22
+    from_port = var.ssh_port
+    to_port = var.ssh_port
     protocol = "tcp"
     cidr_blocks = var.all_ip_range
   }
 
   ingress {
     description = "jenkins in"
-    from_port = 8080
-    to_port = 8080
+    from_port = var.jenkins_port
+    to_port = var.jenkins_port
+    protocol = "tcp"
+    cidr_blocks = var.all_ip_range
+  }
+
+  ingress {
+    description = "http in"
+    from_port = var.http_port
+    to_port = var.http_port
     protocol = "tcp"
     cidr_blocks = var.all_ip_range
   }
