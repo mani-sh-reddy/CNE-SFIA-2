@@ -1,6 +1,5 @@
 # route table / main
 
-# gateway module (template)
 resource "aws_route_table" "public_route_table" {
 vpc_id = var.vpc_id
 
