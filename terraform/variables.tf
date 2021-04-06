@@ -26,8 +26,16 @@ variable "rds_b_subnet_cidr" {
   default = "10.0.6.0/24" # even ip for public
 }
 
-
-
 variable "private_subnet_cidr" {
   default = "10.0.1.0/24" # odd ip for private
+}
+
+
+variable "test_db_name" {}
+variable "prod_db_name" {}
+variable "db_username" {
+  sensitive = true
+}
+variable "db_password" {
+  sensitive = true
 }

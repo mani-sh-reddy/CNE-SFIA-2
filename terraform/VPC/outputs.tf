@@ -22,3 +22,7 @@ output "rds_subnet_a_id" {
 output "rds_subnet_b_id" {
   value = aws_subnet.rds_subnet_b.id
 }
+
+output "rds_subnet_group_name" {
+  value = aws_db_subnet_group.rds_subnet_group.name
+}
