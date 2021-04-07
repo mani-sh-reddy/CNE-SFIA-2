@@ -75,7 +75,7 @@ module "SG" {
 # }
 # -----------------commented out RDS - uncomment for use-----------
 
-module "EC2" {
+module "CI_EC2" {
   source = "./EC2"
 
   ec2_tag_name = "jenkins_ec2"
@@ -87,7 +87,7 @@ module "EC2" {
   public_key_path = var.public_key_path
 }
 
-module "EC2" {
+module "CI_TEST_EC2" {
   source = "./EC2"
 
   ec2_tag_name = "test_ec2"
