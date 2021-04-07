@@ -75,6 +75,15 @@ module "SG" {
 # }
 # -----------------commented out RDS - uncomment for use-----------
 
+
+# running the ec2 key module to send key to aws
+module "EC2KEY" {
+  source = "./EC2KEY"
+  key_name = var.key_name
+  public_key_path = var.public_key_path
+}
+
+
 module "CI_EC2" {
   source = "./EC2"
 
@@ -83,8 +92,7 @@ module "CI_EC2" {
   ec2_instance_type = var.ec2_instance_type
   main_sg_id = module.SG.main_sg_id
   public_subnet_id = module.VPC.public_subnet_id
-  key_name = var.key_name
-  public_key_path = var.public_key_path
+  key_pair_id = module.EC2KEY.key_pair_id
 }
 
 module "CI_TEST_EC2" {
@@ -95,6 +103,5 @@ module "CI_TEST_EC2" {
   ec2_instance_type = var.ec2_instance_type
   main_sg_id = module.SG.main_sg_id
   public_subnet_id = module.VPC.public_subnet_id
-  key_name = var.key_name
-  public_key_path = var.public_key_path
+  key_pair_id = module.EC2KEY.key_pair_id
 }

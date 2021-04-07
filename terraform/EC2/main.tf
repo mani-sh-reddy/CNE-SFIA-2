@@ -10,16 +10,10 @@ resource "aws_instance" "cne_ec2" {
     volume_size = 8
   }
 
-   key_name = aws_key_pair.cne_key_authentication.id
+   key_name = var.key_pair_id
 
   tags = {
     "Name" = var.ec2_tag_name
   }
 
-}
-
-resource "aws_key_pair" "cne_key_authentication" {
-  key_name = var.key_name
-  # not hardcoding the key because when the management VM creates the ec2 it can then use its own public key in the ssh folder, this would then let ansible SSH into to the VMs created by terraform
-  public_key = file(var.public_key_path)
 }
