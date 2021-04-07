@@ -4,5 +4,5 @@ if [ ! -f /usr/local/bin/aws ]; then
     sudo apt install -y unzip 
     unzip -o awscliv2.zip
     sudo ./aws/install
-    aws --version
 fi
+aws --version
