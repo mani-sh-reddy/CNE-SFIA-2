@@ -10,3 +10,4 @@ variable "db_name" {}
 variable "db_username" {}
 variable "db_password" {}
 variable "db_skip_final_snapshot" {}
+variable "db_identifier" {}

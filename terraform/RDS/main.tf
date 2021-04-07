@@ -1,6 +1,6 @@
 # rds / main
 
-resource "aws_db_instance" "test_rds" {
+resource "aws_db_instance" "cne_rds" {
   allocated_storage    = var.db_storage
   engine               = var.db_engine
   engine_version       = var.db_engine_version
@@ -11,7 +11,8 @@ resource "aws_db_instance" "test_rds" {
   username             = var.db_username
   password             = var.db_password
   skip_final_snapshot  = var.db_skip_final_snapshot
+  identifier  = var.db_identifier
   tags                 = {
-    "Name" = "test_rds"
+    "Name" = "cne_rds"
   }
 }
