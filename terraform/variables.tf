@@ -8,6 +8,13 @@ variable "ec2_ami_id" {
 variable "ec2_instance_type" {
   default = "t2.micro"
 }
+variable "key_name" {
+  default = "cne_key.pub"
+}
+variable "public_key_path" {
+  default = "~/.ssh/cne_key.pub"
+}
+
 
 variable "aws_access_key" {
   sensitive = true

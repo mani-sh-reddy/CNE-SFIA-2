@@ -83,4 +83,6 @@ module "EC2" {
   ec2_instance_type = var.ec2_instance_type
   main_sg_id = module.SG.main_sg_id
   public_subnet_id = module.VPC.public_subnet_id
+  key_name = var.key_name
+  public_key_path = var.public_key_path
 }
