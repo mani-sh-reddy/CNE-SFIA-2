@@ -42,7 +42,7 @@ module "SG" {
   vpc_id            = module.VPC.vpc_id
 }
 
-i think this will create in both the subnets automatically because i mentioned the subnet group name.
+# i think this will create in both the subnets automatically because i mentioned the subnet group name.
 module "TEST_RDS" {
   source = "./RDS"
   db_storage = 10
