@@ -6,3 +6,6 @@
 
 - name: "install aws cli"
   script: ../../../install_aws_cli.sh
+
+- name: "install kubectl"
+  script: ../../../install_kubectl.sh
