@@ -3,3 +3,6 @@
 
 - name: "install jenkins"
   script: ../../../install_jenkins.sh
+
+- name: "install aws cli"
+  script: ../../../install_aws_cli.sh
