@@ -2,6 +2,13 @@ variable "aws_region" {
   default = "eu-west-2"
 }
 
+variable "ec2_ami_id" {
+  default = "ami-096cb92bb3580c759"
+}
+variable "ec2_instance_type" {
+  default = "t2.micro"
+}
+
 variable "aws_access_key" {
   sensitive = true
 }

@@ -42,35 +42,45 @@ module "SG" {
   vpc_id            = module.VPC.vpc_id
 }
 
+# -----------------commented out RDS - uncomment for use-----------
 # i think this will create in both the subnets automatically because i mentioned the subnet group name.
-module "TEST_RDS" {
-  source = "./RDS"
+# module "TEST_RDS" {
+#   source = "./RDS"
+#   db_storage = 10
+#   db_engine = "mysql"
+#   db_engine_version = "5.7.22"
+#   db_instance_type = "db.t2.micro"
+#   db_subnet_group = module.VPC.rds_subnet_group_name
+#   sg_id = module.SG.rds_sg_id
+#   db_name = var.test_db_name
+#   db_username = var.db_username
+#   db_password = var.db_password
+#   db_skip_final_snapshot = true
+#   db_identifier = "cne-test-db"
+# }
 
-  db_storage = 10
-  db_engine = "mysql"
-  db_engine_version = "5.7.22"
-  db_instance_type = "db.t2.micro"
-  db_subnet_group = module.VPC.rds_subnet_group_name
-  sg_id = module.SG.rds_sg_id
-  db_name = var.test_db_name
-  db_username = var.db_username
-  db_password = var.db_password
-  db_skip_final_snapshot = true
-  
-}
+# module "PROD_RDS" {
+#   source = "./RDS"
+#   db_storage = 10
+#   db_engine = "mysql"
+#   db_engine_version = "5.7.22"
+#   db_instance_type = "db.t2.micro"
+#   db_subnet_group = module.VPC.rds_subnet_group_name
+#   sg_id = module.SG.rds_sg_id
+#   db_name = var.prod_db_name
+#   db_username = var.db_username
+#   db_password = var.db_password
+#   db_skip_final_snapshot = true
+#   db_identifier = "cne-prod-db"
+# }
+# -----------------commented out RDS - uncomment for use-----------
 
-module "PROD_RDS" {
-  source = "./RDS"
+module "EC2" {
+  source = "./EC2"
 
-  db_storage = 10
-  db_engine = "mysql"
-  db_engine_version = "5.7.22"
-  db_instance_type = "db.t2.micro"
-  db_subnet_group = module.VPC.rds_subnet_group_name
-  sg_id = module.SG.rds_sg_id
-  db_name = var.prod_db_name
-  db_username = var.db_username
-  db_password = var.db_password
-  db_skip_final_snapshot = true
-  
+  ec2_tag_name = "jenkins_ec2"
+  ec2_ami_id = var.ec2_ami_id
+  ec2_instance_type = var.ec2_instance_type
+  main_sg_id = module.SG.main_sg_id
+  public_subnet_id = module.VPC.public_subnet_id
 }
