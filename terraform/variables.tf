@@ -11,9 +11,7 @@ variable "ec2_instance_type" {
 variable "key_name" {
   default = "cne_key.pub"
 }
-variable "public_key_path" {
-  default = "~/.ssh/cne_key.pub"
-}
+variable "public_key_path" {}
 
 
 variable "aws_access_key" {
