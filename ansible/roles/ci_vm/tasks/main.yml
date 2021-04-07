@@ -1,2 +1,5 @@
 ---
 # tasks file for ci_vm
+
+- name: "install jenkins"
+  script: ../../../install_jenkins.sh
