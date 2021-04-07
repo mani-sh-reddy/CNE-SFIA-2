@@ -6,8 +6,8 @@ module "VPC" {
   vpc_cidr            = var.vpc_cidr
   public_subnet_cidr  = var.public_subnet_cidr
   private_subnet_cidr = var.private_subnet_cidr
-  rds_a_subnet_cidr = var.rds_a_subnet_cidr
-  rds_b_subnet_cidr = var.rds_b_subnet_cidr
+  rds_a_subnet_cidr   = var.rds_a_subnet_cidr
+  rds_b_subnet_cidr   = var.rds_b_subnet_cidr
 }
 
 module "GATEWAY" {
@@ -28,18 +28,18 @@ module "RT" {
   gateway_id        = module.GATEWAY.gateway_id
   vpc_default_rt_id = module.VPC.vpc_default_rt_id
   public_subnet_id  = module.VPC.public_subnet_id
-  rds_subnet_a_id = module.VPC.rds_subnet_a_id
-  rds_subnet_b_id = module.VPC.rds_subnet_b_id
+  rds_subnet_a_id   = module.VPC.rds_subnet_a_id
+  rds_subnet_b_id   = module.VPC.rds_subnet_b_id
 }
 
 
 module "SG" {
   source = "./SG"
-  
+
   vpc_cidr_block = var.vpc_cidr
 
   #accessing the outputs of some modules and sending it to source.
-  vpc_id            = module.VPC.vpc_id
+  vpc_id = module.VPC.vpc_id
 }
 
 # -----------------commented out RDS - uncomment for use-----------
@@ -78,8 +78,8 @@ module "SG" {
 
 # running the ec2 key module to send key to aws
 module "EC2KEY" {
-  source = "./EC2KEY"
-  key_name = var.key_name
+  source          = "./EC2KEY"
+  key_name        = var.key_name
   public_key_path = var.public_key_path
 }
 
@@ -87,21 +87,21 @@ module "EC2KEY" {
 module "CI_EC2" {
   source = "./EC2"
 
-  ec2_tag_name = "jenkins_ec2"
-  ec2_ami_id = var.ec2_ami_id
+  ec2_tag_name      = "jenkins_ec2"
+  ec2_ami_id        = var.ec2_ami_id
   ec2_instance_type = var.ec2_instance_type
-  main_sg_id = module.SG.main_sg_id
-  public_subnet_id = module.VPC.public_subnet_id
-  key_pair_id = module.EC2KEY.key_pair_id
+  main_sg_id        = module.SG.main_sg_id
+  public_subnet_id  = module.VPC.public_subnet_id
+  key_pair_id       = module.EC2KEY.key_pair_id
 }
 
 module "CI_TEST_EC2" {
   source = "./EC2"
 
-  ec2_tag_name = "test_ec2"
-  ec2_ami_id = var.ec2_ami_id
+  ec2_tag_name      = "test_ec2"
+  ec2_ami_id        = var.ec2_ami_id
   ec2_instance_type = var.ec2_instance_type
-  main_sg_id = module.SG.main_sg_id
-  public_subnet_id = module.VPC.public_subnet_id
-  key_pair_id = module.EC2KEY.key_pair_id
+  main_sg_id        = module.SG.main_sg_id
+  public_subnet_id  = module.VPC.public_subnet_id
+  key_pair_id       = module.EC2KEY.key_pair_id
 }
