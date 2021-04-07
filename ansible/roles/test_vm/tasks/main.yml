@@ -1,2 +1,5 @@
 ---
 # tasks file for test_vm
+
+- name: "install mysql client"
+  script: ../../../install_mysql_client.sh
