@@ -3,3 +3,6 @@
 
 - name: "install mysql client"
   script: ../../../install_mysql_client.sh
+
+- name: "install docker compose"
+  script: ../../../install_docker_compose.sh
