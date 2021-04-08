@@ -5,5 +5,5 @@ cd ~/CNE-SFIA-2/frontend
 sudo docker build -t cne_flask_frontend .
 
 cd ~/CNE-SFIA-2/backend
-sudo docker build -t cne_flask_backend .
+sudo docker build -t backend .
 EOF
