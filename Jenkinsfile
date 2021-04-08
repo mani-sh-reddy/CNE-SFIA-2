@@ -1,6 +1,14 @@
 pipeline{
         agent any
         stages{
+
+            scp -i ~/.ssh/id_rsa.pub USER@SERVER:/home/USER/FILENAME /home/USER/FILENAME
+            
+            stage('Secure copying scripts to Test VM'){
+                steps{
+                    sh "scp -o StrictHostKeyChecking=no -i /home/jenkins/.ssh/id_rsa ubuntu@18.132.2.39:/home/jenkins/remove_old_repo_and_clone_new.sh remove_old_repo_and_clone_new.sh"
+                }
+            }
             
             stage('Remove Old Repo and Clone New'){
                 steps{
