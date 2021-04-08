@@ -15,6 +15,13 @@ pipeline{
                 }
             }
 
+            stage('Running Docker Images'){
+                steps{
+                    sh "sh run_docker_images.sh"
+                }
+            }
+
+
             // push to docker hub
             stage('Push images to Dockerhub'){
                 steps{
@@ -26,11 +33,5 @@ pipeline{
                 }
             }
 
-            // sshing into the test vm
-            stage('Run Pytest Script in Test VM') {
-                 steps{
-                    sh "ssh -i /home/jenkins/.ssh/id_rsa ubuntu@18.132.2.39 << cd ~ && sudo sh docker_run_script.sh"
-                }
-            }
         }
 }
