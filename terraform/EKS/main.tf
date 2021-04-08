@@ -20,6 +20,8 @@ resource "aws_eks_node_group" "cne_eks_node_group" {
 
   subnet_ids      = var.cluster_subnets
 
+  instance_types = [var.instance_type]
+
   scaling_config {
     desired_size = var.node_group_desired_size
     max_size     = var.node_group_max_size

@@ -9,6 +9,7 @@ variable "node_group_name" {}
 variable "node_group_desired_size" {}
 variable "node_group_max_size"     {}
 variable "node_group_min_size"     {}
+variable "instance_type"     {}
 
 variable "eks_cluster_role_arn"     {}
 variable "eks_cluster_policy"     {}

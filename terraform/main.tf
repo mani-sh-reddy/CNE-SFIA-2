@@ -122,6 +122,7 @@ module "EKS" {
   node_group_desired_size = 2
   node_group_min_size = 2
   node_group_max_size = 4
+  instance_type = "t2.micro" # is this enough power???????
 
   eks_cluster_role_arn = module.POLICIES.eks_cluster_role_arn
   eks_cluster_policy = module.POLICIES.eks_cluster_policy
