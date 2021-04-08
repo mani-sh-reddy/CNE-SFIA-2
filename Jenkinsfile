@@ -42,6 +42,12 @@ pipeline{
                 }
             }
 
+            stage('Export Test Coverage'){
+                steps{
+                    sh "sh export_test_results.sh"
+                }
+            }
+
 
             // push to docker hub
             stage('Push images to Dockerhub'){
