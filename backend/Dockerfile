@@ -26,7 +26,7 @@ RUN pip3 install -r requirements.txt
 
 COPY . ./
 
-RUN pytest --cov application
+# RUN pytest --cov application
 
 EXPOSE 5001
 
