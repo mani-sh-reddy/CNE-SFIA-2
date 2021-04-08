@@ -23,7 +23,7 @@ pipeline{
             // sshing into the test vm
             stage('Run Pytest Script in Test VM') {
                  steps{
-                    sh "ssh ubuntu@18.132.2.39 << cd ~ && sudo sh docker_run_script.sh"
+                    sh "ssh -i /home/ubuntu/.ssh/cne_key_management ubuntu@18.132.2.39 << cd ~ && sudo sh docker_run_script.sh"
                 }
             }
         }
