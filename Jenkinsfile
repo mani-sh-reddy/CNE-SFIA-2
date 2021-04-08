@@ -8,6 +8,13 @@ pipeline{
                 }
             }
 
+            // replacing backend dockerfile with one with secrets included.
+            stage('Swap backend Dockerfile with Secret Vars Dockerfile'){
+                steps{
+                    sh "sh swap_backend_dockerfile.sh"
+                }
+            }
+
             // clear previous docker images/containers
             stage('Clean Docker'){
                 steps{
