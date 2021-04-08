@@ -5,11 +5,9 @@ RUN mkdir /opt/frontend
 WORKDIR /opt/frontend
 
 
-COPY requirements.txt ./ 
+COPY . .
 
 RUN pip3 install -r requirements.txt
-
-COPY . ./
 
 # RUN pytest --cov application 
 

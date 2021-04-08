@@ -46,7 +46,7 @@ pipeline{
             // push to docker hub
             stage('Push images to Dockerhub'){
                 steps{
-                    sh "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    sh "sh push_to_dockerhub.sh"
                 }
             }
 

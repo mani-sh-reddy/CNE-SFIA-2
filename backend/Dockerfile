@@ -12,11 +12,9 @@ RUN mkdir /opt/backend
 WORKDIR /opt/backend
 
 
-COPY requirements.txt ./ 
+COPY . . 
 
 RUN pip3 install -r requirements.txt
-
-COPY . ./
 
 # RUN pytest --cov application
 
