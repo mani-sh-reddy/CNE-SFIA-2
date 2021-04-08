@@ -21,15 +21,17 @@ pipeline{
                 }
             }
 
+            stage('Run Pytest'){
+                steps{
+                    sh "sh run_pytest_export_coverage.sh"
+                }
+            }
+
 
             // push to docker hub
             stage('Push images to Dockerhub'){
                 steps{
-                    sh "sudo docker tag cne_flask_frontend:latest manishreddy1/cne_flask_frontend:latest"
-                    sh "sudo docker tag cne_flask_backend:latest manishreddy1/cne_flask_backend:latest"
-
-                    sh "sudo docker push manishreddy1/cne_flask_frontend:latest"
-                    sh "sudo docker push manishreddy1/cne_flask_backend:latest"
+                    sh "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                 }
             }
 
