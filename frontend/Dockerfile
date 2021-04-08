@@ -6,9 +6,9 @@ ENV DATABASE_URI=mysql+pymysql://{{ DB_USERNAME }}:{{ DB_PASSWORD }}@{{ DB_ENDPO
 
 
 
-RUN mkdir /opt/backend
+RUN mkdir /opt/frontend
 
-WORKDIR /opt/backend
+WORKDIR /opt/frontend
 
 
 COPY requirements.txt ./ 
@@ -17,8 +17,8 @@ RUN pip3 install -r requirements.txt
 
 COPY . ./
 
-RUN pytest --cov application
+RUN pytest --cov application 
 
-EXPOSE 5001
+EXPOSE 5000
 
 ENTRYPOINT ["python3", "app.py"]
