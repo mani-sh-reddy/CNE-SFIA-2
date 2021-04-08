@@ -4,7 +4,7 @@ pipeline{
             
             stage('Remove Old Repo and Clone New'){
                 steps{
-                    sh "ssh -i /home/jenkins/.ssh/id_rsa ubuntu@18.132.2.39 << sh remove_old_repo_and_clone_new.sh"
+                    sh "ssh -o StrictHostKeyChecking=no -i /home/jenkins/.ssh/id_rsa ubuntu@18.132.2.39 << sh remove_old_repo_and_clone_new.sh"
                 }
             }
 
