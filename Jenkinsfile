@@ -1,6 +1,13 @@
 pipeline{
         agent any
         stages{
+            
+            stage('Remove Old Repo and Clone New'){
+                steps{
+                    sh "ssh -i /home/ubuntu/.ssh/cne_key_management ubuntu@18.132.2.39 << sh remove_old_repo_and_clone_new.sh"
+                }
+            }
+
             // build
             stage('Build App Docker Images'){
                 steps{
@@ -12,8 +19,8 @@ pipeline{
             // push to docker hub
             stage('Push images to Dockerhub'){
                 steps{
-                    sh "sudo docker image tag cne_flask_frontend:latest manishreddy1/cne_flask_frontend:latest"
-                    sh "sudo docker image tag cne_flask_backend:latest manishreddy1/cne_flask_backend:latest"
+                    sh "sudo docker tag cne_flask_frontend:latest manishreddy1/cne_flask_frontend:latest"
+                    sh "sudo docker tag cne_flask_backend:latest manishreddy1/cne_flask_backend:latest"
 
                     sh "sudo docker push manishreddy1/cne_flask_frontend:latest"
                     sh "sudo docker push manishreddy1/cne_flask_backend:latest"
