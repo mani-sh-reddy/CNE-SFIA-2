@@ -8,8 +8,8 @@ _April 2021_
 
 **External Resources**
 
--[]()
--[]()
+-[Jira](https://mani-reddy.atlassian.net/jira/software/projects/DEVOPS/boards/6/)
+-[Risk Assessment](https://docs.google.com/spreadsheets/d/1qFdHa1j7WOg5ZGF0we9EB4iZhYK1lBd5e9SVNm-6knY/edit?usp=sharing)
 -[]()
 
 ## Project Brief 

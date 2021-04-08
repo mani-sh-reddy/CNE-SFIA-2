@@ -1,0 +1,10 @@
+all:
+  hosts:
+    # jenkins_ec2
+    35.178.65.213:
+      ansible_ssh_private_key_file: "/home/ubuntu/.ssh/cne_key_management"
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+    # test_ec2
+    18.132.2.39:
+      ansible_ssh_private_key_file: "/home/ubuntu/.ssh/cne_key_management"
+      ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
