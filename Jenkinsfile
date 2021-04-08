@@ -1,8 +1,6 @@
 pipeline{
         agent any
         stages{
-
-            scp -i ~/.ssh/id_rsa.pub USER@SERVER:/home/USER/FILENAME /home/USER/FILENAME
             
             stage('Secure copying scripts to Test VM'){
                 steps{
