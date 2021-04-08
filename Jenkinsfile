@@ -28,11 +28,12 @@ pipeline{
                     docker pull manishreddy1/cne_flask_frontend:latest
                     docker push manishreddy1/cne_flask_backend:latest
 
-
                     docker run -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e DB_ENDPOINT=$DB_ENDPOINT -e DB_NAME=$DB_NAME -e SECRET_KEY=$SECRET_KEY -d -p 5000:5000 --name frontend frontend
                     
                     docker run -e DB_USERNAME=$DB_USERNAME -e DB_PASSWORD=$DB_PASSWORD -e DB_ENDPOINT=$DB_ENDPOINT -e DB_NAME=$DB_NAME -e SECRET_KEY=$SECRET_KEY -d -p 5001:5001 --name backend backend
-                    
+
+                    docker exec cne_flask_frontend pytest tests/test_frontend.py --cov application >> frontend_test_coverage.html
+                    docker exec cne_flask_backend pytest tests/test_backend.py --cov application >> backend_test_coverage.html
 
                     EOF"
                 }
