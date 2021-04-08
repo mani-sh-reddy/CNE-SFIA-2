@@ -8,6 +8,13 @@ pipeline{
                 }
             }
 
+            // clear previous docker images/containers
+            stage('Clean Docker'){
+                steps{
+                    sh "sh clean_docker.sh"
+                }
+            }
+
             // build
             stage('Build App Docker Images'){
                 steps{
@@ -17,6 +24,7 @@ pipeline{
 
             stage('Running Docker Images'){
                 steps{
+                    // running backend as remote script due to secret vars
                     sh "sh run_docker_images.sh"
                 }
             }
