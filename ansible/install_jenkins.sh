@@ -42,4 +42,8 @@ done
 echo "initial admin password: \$(cat .jenkins/secrets/initialAdminPassword)"
 EOF
 fi
+echo '                               '
 curl ifconfig.me
+echo '                               '
+cat /home/jenkins/.jenkins/secrets/initialAdminPassword
+echo '                               '
