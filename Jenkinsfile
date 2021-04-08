@@ -11,8 +11,7 @@ pipeline{
             // build
             stage('Build App Docker Images'){
                 steps{
-                    sh "cd frontend && sudo docker build -t cne_flask_frontend ."
-                    sh "cd backend && sudo docker build -t cne_flask_backend ."
+                    sh "sh build_app_and_docker_images.sh"
                 }
             }
 
