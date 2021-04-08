@@ -20,7 +20,9 @@ variable "rds_b_subnet_cidr" {
   type = string
 }
 
-
+variable "eks_subnet_cidr" {
+  type = string
+}
 
 variable "private_subnet_cidr" {
   type = string

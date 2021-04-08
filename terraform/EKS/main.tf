@@ -3,7 +3,7 @@ resource "aws_eks_cluster" "cne_eks_cluster" {
   name = var.cluster_name
   version = var.cluster_version
   vpc_config {
-    subnet_ids = [var.subnet]
+    subnet_ids = var.cluster_subnets
   }
 
    role_arn = var.eks_cluster_role_arn 
@@ -18,7 +18,7 @@ resource "aws_eks_node_group" "cne_eks_node_group" {
   cluster_name    = aws_eks_cluster.cne_eks_cluster.name
   node_group_name = var.node_group_name
 
-  subnet_ids      = [var.subnet]
+  subnet_ids      = var.cluster_subnets
 
   scaling_config {
     desired_size = var.node_group_desired_size

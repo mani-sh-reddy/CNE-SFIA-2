@@ -1,7 +1,7 @@
 # eks / variables
 variable "cluster_name" {}
 variable "cluster_version" {}
-variable "subnet" {}
+variable "cluster_subnets" {}
 variable "vpc_id" {}
 
 variable "node_group_name" {}

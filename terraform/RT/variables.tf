@@ -15,6 +15,8 @@ variable "vpc_default_rt_id" {
 
 variable "public_subnet_id" {
 }
+variable "eks_subnet_id" {
+}
 
 variable "rds_subnet_a_id" {
 }

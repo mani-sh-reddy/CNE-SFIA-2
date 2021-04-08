@@ -71,6 +71,22 @@ resource "aws_db_subnet_group" "rds_subnet_group" {
 }
 
 
+# EKS - because need 2nd AZ subnet
+resource "aws_subnet" "eks_subnet_x" {
+   vpc_id = aws_vpc.vpc.id
+   cidr_block = var.eks_subnet_cidr
+   
+   # to set public ip for instances in this subnet
+   map_public_ip_on_launch = true
+
+   availability_zone = "eu-west-2c"
+
+  tags = {
+    "Name" = "eks_extra_subnet"
+  }
+}
+
+
 
 
 # not using this subnet due to time and cost constraints - but its here if needed.

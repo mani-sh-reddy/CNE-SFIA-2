@@ -8,6 +8,7 @@ module "VPC" {
   private_subnet_cidr = var.private_subnet_cidr
   rds_a_subnet_cidr   = var.rds_a_subnet_cidr
   rds_b_subnet_cidr   = var.rds_b_subnet_cidr
+  eks_subnet_cidr = var.eks_subnet_cidr
 }
 
 module "GATEWAY" {
@@ -28,6 +29,7 @@ module "RT" {
   gateway_id        = module.GATEWAY.gateway_id
   vpc_default_rt_id = module.VPC.vpc_default_rt_id
   public_subnet_id  = module.VPC.public_subnet_id
+  eks_subnet_id  = module.VPC.eks_subnet_id
   rds_subnet_a_id   = module.VPC.rds_subnet_a_id
   rds_subnet_b_id   = module.VPC.rds_subnet_b_id
 }
@@ -113,7 +115,7 @@ module "EKS" {
 
   cluster_name      = "cne_eks_cluster"
   cluster_version = 1.17
-  subnet = module.VPC.public_subnet_id
+  cluster_subnets = [module.VPC.public_subnet_id, module.VPC.eks_subnet_id]
   vpc_id = module.VPC.vpc_id
  
   node_group_name = "cne_eks_node_group"

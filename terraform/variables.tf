@@ -42,6 +42,10 @@ variable "private_subnet_cidr" {
   default = "10.0.1.0/24" # odd ip for private
 }
 
+variable "eks_subnet_cidr" {
+  default = "10.0.8.0/24" # even ip for public
+}
+
 
 variable "test_db_name" {}
 variable "prod_db_name" {}

@@ -14,6 +14,11 @@ resource "aws_route_table_association" "public_rt_association" {
   route_table_id = aws_route_table.public_route_table.id
 }
 
+resource "aws_route_table_association" "eks_rt_association" {
+  subnet_id = var.eks_subnet_id
+  route_table_id = aws_route_table.public_route_table.id
+}
+
 # connecting the public route table to the rds subnetgroup using route table association.
 # SUBNET A
 resource "aws_route_table_association" "rds_subnet_a_rt_association" {
