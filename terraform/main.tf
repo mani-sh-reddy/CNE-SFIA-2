@@ -114,7 +114,7 @@ module "EKS" {
   source = "./EKS"
 
   cluster_name      = "cne_eks_cluster"
-  cluster_version = 1.20
+  cluster_version = 1.17
   cluster_subnets = [module.VPC.public_subnet_id, module.VPC.eks_subnet_id]
   vpc_id = module.VPC.vpc_id
  
