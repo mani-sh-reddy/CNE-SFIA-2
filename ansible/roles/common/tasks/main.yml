@@ -1,0 +1,6 @@
+---
+# tasks file for common
+
+- name: "install docker"
+  script: ../../../install_docker.sh
+  
