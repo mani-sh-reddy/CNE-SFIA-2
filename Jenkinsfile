@@ -38,7 +38,7 @@ pipeline{
 
             stage('Run Pytest'){
                 steps{
-                    sh "sh run_pytest_export_coverage.sh"
+                    sh "sh run_pytest.sh"
                 }
             }
 
