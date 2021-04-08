@@ -5,4 +5,7 @@ sudo docker exec cne_flask_frontend pytest tests/test_frontend.py --cov applicat
 
 sudo docker exec backend pytest tests/test_backend.py --cov application >> backend_test_coverage.html
 
+cat ~/frontend_test_coverage.html
+cat ~/backend_test_coverage.html
+
 EOF
