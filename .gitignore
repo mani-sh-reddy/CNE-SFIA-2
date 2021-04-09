@@ -2,5 +2,5 @@
 **/**/__pycache__/
 **/**/.coverage
 
-workspace.code-workspace
-/GIT_IGNORED 
+*.code-workspace
+/GIT_IGNORED

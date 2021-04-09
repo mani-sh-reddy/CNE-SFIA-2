@@ -1,0 +1,1 @@
+cat ~/CNE-SFIA-2/terraform/terraform.tfstate | grep '"endpoint": "cne'

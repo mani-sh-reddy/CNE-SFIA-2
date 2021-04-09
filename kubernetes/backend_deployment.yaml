@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: cneNamespace
+  labels:
+    app: backend
+spec:
+# number of pods
+  replicas: 3
+  strategy:
+  selector:
+    matchLabels:
+      app: backend
+  # pod templates allow many more pods to be based off them
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: manishreddy1/backend:latest
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 5001
+        
