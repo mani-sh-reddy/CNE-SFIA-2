@@ -7,7 +7,7 @@
   - ci_vm
 
 # test
-- hosts: 18.132.2.39
+- hosts: 3.10.171.127
   become: yes
   roles:
   - common
