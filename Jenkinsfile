@@ -59,7 +59,7 @@ pipeline{
             // kubernetes cluster app deployment
             stage('Deploy App'){
                 steps{
-                    sh "sh kubernetes/deploy.sh"
+                    sh "chmod +x kubernetes/deploy.sh && sh kubernetes/deploy.sh"
                 }
             }
 
