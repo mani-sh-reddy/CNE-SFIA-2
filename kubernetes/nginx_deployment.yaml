@@ -23,6 +23,7 @@ spec:
           httpGet:
             path: /
             port: 80
+            # Add a file in read-only volume, for the application to read?
         volumeMounts:
         - name: nginx_config
           mountPath: /etc/nginx/conf.d
