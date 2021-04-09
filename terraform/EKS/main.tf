@@ -36,5 +36,3 @@ resource "aws_eks_node_group" "cne_eks_node_group" {
   ]
 
 }
-
-
