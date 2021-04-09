@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginxLoadbalancer
+  name: nginx_loadbalancer
   namespace: cneNamespace
 spec:
   selector:
