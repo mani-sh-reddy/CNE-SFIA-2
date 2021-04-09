@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: cneNamespace
+  labels:
+    app: frontend
+spec:
+# number of pods
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  # pod templates allow many more pods to be based off them
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: cne_flask_frontend
+        image: manishreddy1/cne_flask_frontend
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 5000
