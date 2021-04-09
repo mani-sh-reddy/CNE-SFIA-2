@@ -1,0 +1,13 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx_config
+  namespace: cneNamespace
+data:
+  default.conf: |
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://frontend:5000;
+        }
+    }

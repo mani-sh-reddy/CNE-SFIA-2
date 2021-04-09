@@ -106,30 +106,31 @@ module "CI_TEST_EC2" {
   key_pair_id       = module.EC2KEY.key_pair_id
 }
 
-module "POLICIES" {
-  source = "./POLICIES"
-}
+# not using anymore...
+# module "POLICIES" {
+#   source = "./POLICIES"
+# }
 
-module "EKS" {
-  source = "./EKS"
+# module "EKS" {
+#   source = "./EKS"
 
-  cluster_name      = "cne_eks_cluster"
-  cluster_version = 1.17
-  cluster_subnets = [module.VPC.public_subnet_id, module.VPC.eks_subnet_id]
-  vpc_id = module.VPC.vpc_id
+#   cluster_name      = "cne_eks_cluster"
+#   cluster_version = 1.17
+#   cluster_subnets = [module.VPC.public_subnet_id, module.VPC.eks_subnet_id]
+#   vpc_id = module.VPC.vpc_id
  
-  node_group_name = "cne_eks_node_group"
-  node_group_desired_size = 2
-  node_group_min_size = 2
-  node_group_max_size = 4
-  instance_type = "t2.micro" # is this enough power???????
+#   node_group_name = "cne_eks_node_group"
+#   node_group_desired_size = 2
+#   node_group_min_size = 2
+#   node_group_max_size = 4
+#   instance_type = "t2.micro" # is this enough power???????
 
-  eks_cluster_role_arn = module.POLICIES.eks_cluster_role_arn
-  eks_cluster_policy = module.POLICIES.eks_cluster_policy
-  eks_cluster_rc_policy = module.POLICIES.eks_cluster_rc_policy
-  node_group_role_arn = module.POLICIES.node_group_role_arn
-  worker_node_policy = module.POLICIES.worker_node_policy
-  eks_cni_policy = module.POLICIES.eks_cni_policy
-  container_reg_read_only = module.POLICIES.container_reg_read_only
+#   eks_cluster_role_arn = module.POLICIES.eks_cluster_role_arn
+#   eks_cluster_policy = module.POLICIES.eks_cluster_policy
+#   eks_cluster_rc_policy = module.POLICIES.eks_cluster_rc_policy
+#   node_group_role_arn = module.POLICIES.node_group_role_arn
+#   worker_node_policy = module.POLICIES.worker_node_policy
+#   eks_cni_policy = module.POLICIES.eks_cni_policy
+#   container_reg_read_only = module.POLICIES.container_reg_read_only
 
-}
+# }
