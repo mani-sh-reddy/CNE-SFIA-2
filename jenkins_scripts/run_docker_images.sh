@@ -9,6 +9,6 @@ sudo docker run --network my-network -d -p 5000:5000 --name cne_flask_frontend c
 
 cd ~/CNE-SFIA-2/backend
 
-sudo sh ~/docker_run_script.sh
+sudo docker run --network my-network -d -p 5001:5001 --name backend backend
 
 EOF
