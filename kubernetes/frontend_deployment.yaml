@@ -9,9 +9,6 @@ spec:
 # number of pods
   replicas: 3
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 2
   selector:
     matchLabels:
       app: frontend
