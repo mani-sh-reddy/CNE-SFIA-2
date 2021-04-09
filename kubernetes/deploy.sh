@@ -1,4 +1,7 @@
 #!/bin/bash
+
+export KUBECONFIG=~/.kube/config
+
 kubectl apply -f namespace.yaml
 kubectl config set-context --current --namespace=cneNamespace
 kubectl apply -f nginx_config.yaml
