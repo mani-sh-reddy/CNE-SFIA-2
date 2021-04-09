@@ -5,7 +5,7 @@ sudo docker network create new-net
 
 cd ~/CNE-SFIA-2/frontend
 
-sudo docker run --network my-network -d -p 5000:5000 --name cne_flask_frontend cne_flask_frontend
+sudo docker run --network new-net -d -p 5000:5000 --name cne_flask_frontend cne_flask_frontend
 
 cd ~/CNE-SFIA-2/backend
 
