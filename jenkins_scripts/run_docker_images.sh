@@ -1,10 +1,7 @@
 #! /bin/bash
 ssh -o StrictHostKeyChecking=no -i /home/jenkins/.ssh/id_rsa ubuntu@18.132.2.39 << EOF
 
-cat network_current.txt | xargs sudo docker network rm
-rm network_current.txt
-
-sudo docker network create my-network --subnet 99.12.0.0/16 >> network_current.txt
+sudo docker network create new-net
 
 cd ~/CNE-SFIA-2/frontend
 
