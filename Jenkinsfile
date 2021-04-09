@@ -58,11 +58,9 @@ pipeline{
 
             // kubernetes cluster app deployment
             stage('Deploy App'){
-                kubernetesDeploy(
-                    kubeconfigId: 'K8S',
-                    enableConfigSubstitution: true
+                steps{
                     sh "sh kubernetes/deploy.sh"
-                    ) 
+                }
             }
 
         }
