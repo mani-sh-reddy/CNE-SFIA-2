@@ -9,5 +9,5 @@ kubectl rollout restart deployment/frontend
 kubectl rollout restart deployment/backend
 
 
-kubectl apply -f nginx_conf.yaml nginx_deployment.yaml nginx_loadbalancer.yaml frontend_service.yaml frontend_deployment.yaml backend_deployment.yaml backend_service.yaml
+kubectl apply -f nginx_conf.yaml -f nginx_deployment.yaml -f nginx_loadbalancer.yaml -f frontend_service.yaml -f frontend_deployment.yaml -f backend_deployment.yaml -f backend_service.yaml
 kubectl describe service nginx_loadbalancer
