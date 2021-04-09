@@ -27,7 +27,7 @@ _April 2021_
 Deployment of a simple Flask application, built in Python, that makes use of a microservice architecture comprising of 2 separate services and utilises a CI Pipeline.
 
 - **Jira** board created with full expansion on tasks, providing a record of any issues or risks that were faced.
-- Deploy application using containerisation (**Docker**) and orchestration (**Kubernetes**) tools.
+- Deploy the application using containerisation (**Docker**) and orchestration (**Kubernetes**) tools.
 - Test application through the CI pipeline with **Jenkins**.
 - Make use of two managed Database Servers: 1 for Testing and 1 for Production with **AWS RDS**.
 - Use **Github** webhooks so that Jenkins recreates and redeploys the application when a change to the code base has been made.
@@ -39,7 +39,7 @@ Deployment of a simple Flask application, built in Python, that makes use of a m
 
 ## Project Planning
 Project planning was done in Jira. The Jira board can be found above in the external resources section.
-The categorised into epics and put into respective sprints. The kanban board was used to track progress. Below is an example Sprint Kanban board as the project was nearing completion:
+Tasks were categorised into epics and put into respective sprints. The Kanban board was used to track progress. Below is an example Sprint Kanban board as the project was nearing completion:
 
 ![jira-board](https://user-images.githubusercontent.com/47571755/114134719-15d0fe80-9900-11eb-9ad3-4f0685f3535a.png)
 
@@ -52,7 +52,7 @@ Below is the risk assessment that was conducted for the project:
 Below is the architecture diagram for the project:
 
 ![cne_NEW_architecture_diagram](https://user-images.githubusercontent.com/47571755/114135953-e4f1c900-9901-11eb-97b7-57e72f2a253a.png)
-- The developer pushes to github.
+- The developer pushes to GitHub.
 - This then triggers the Jenkins CI through an SCM webhook.
 - The CI server runs through the stages necessary for the build.
 - Removes Old Repo and Clones New.
@@ -63,7 +63,7 @@ Below is the architecture diagram for the project:
 - Run Pytest.
 - Export Test Coverage
 - Push images to Dockerhub.
-- If test are successful, pull from dockerhub and deploy the app.
+- If tests are successful, pull from Dockerhub and deploy the app.
 - The management VM contains the tools Terraform used to provision the VMs and RDSs, and Ansible using to install the software onto the previsioned VMs. This was the initial stage of the project and the section below goes into more depth on this.
 
 ### AWS - Amazon Web Services
@@ -76,7 +76,7 @@ This project utilised AWS cloud resources. A network diagram was created to get 
 ### Terraform
 Terraform is an infrastructure management tool that allows the provision of AWS (and many other) cloud resources through code - as opposed to running commands on the command line.
 
-In this project Terraform was extensively used to provision the 2 EC2s, 2 RDSs and the networking that's required.
+In this project, Terraform was extensively used to provision the 2 EC2s, 2 RDSs and the networking that's required.
 
 Terraform uses modules, they are templates for multiple resources that are used together.
 
@@ -87,7 +87,7 @@ Below is a snippet of the Terraform plan output:
 
 ### Ansible
 
-Ansible is another infrastructure as code tool that enables software installations as code. Instead of the commandline, Ansible allows installations via the playbook.
+Ansible is another infrastructure as code tool that enables software installations as code. Instead of the command line, Ansible allows installations via the playbook.
 
 ![ansible-playbook](https://user-images.githubusercontent.com/47571755/114142716-30f53b80-990b-11eb-96ec-65239c3a4b1a.png)
 
@@ -100,7 +100,7 @@ Here is a list of the tasks that are inside the roles. The tasks shown below are
 ![ansible-roles](https://user-images.githubusercontent.com/47571755/114143394-02c42b80-990c-11eb-9d2a-c8acf2a34622.png)
 
 
-These are the scripts that are run on the VMs to install software.
+These are the scripts that are run on the VMs to install the software.
 
 ![ansible-scripts](https://user-images.githubusercontent.com/47571755/114143494-24bdae00-990c-11eb-8278-010ea107c4d0.png)
 
@@ -114,7 +114,7 @@ When Jenkins receives a webhook trigger from a push to Github, the build starts.
 
 The Jenkinsfile is run and the works through the stages.
 
-In this project there were 9 total stages of the CI/CD pipeline.
+In this project, there were 9 total stages of the CI/CD pipeline.
 
 - Removes Old Repo and Clones New.
 - Swap backend Dockerfile with Secret Vars Dockerfile.
@@ -124,7 +124,7 @@ In this project there were 9 total stages of the CI/CD pipeline.
 - Run Pytest.
 - Export Test Coverage
 - Push images to Dockerhub.
-- If test are successful, pull from dockerhub and deploy the app.
+- If tests are successful, pull from Dockerhub and deploy the app.
 
 ![jenkins-file](https://user-images.githubusercontent.com/47571755/114147637-cd6e0c80-9910-11eb-8395-0f624ae3dd4e.png)
 
@@ -132,14 +132,14 @@ Different stages access different scripts that are run on the respective VMs. In
 
 ![jenkins-scripts](https://user-images.githubusercontent.com/47571755/114146878-02c62a80-9910-11eb-9a19-c8c936a88409.png)
 
-For the Jenkins pipeline the app is not deployed in the kubernetes cluster so that phase of the build has not passed. This shows that CI was successful, but it has not deployed yet.
+For the Jenkins pipeline, the app is not deployed in the Kubernetes cluster so that phase of the build has not passed. This shows that CI was successful, but it has not deployed yet.
 
-From the second stage, Docker was used to containerise the application ready for test. This is explained further in the section below.
+From the second stage, Docker was used to containerise the application ready for testing. This is explained further in the section below.
 
 ### Docker
-For this project, Docker was used to containerise the flask application. The app consisted of both the front-end and back-end and both parts needed to be put in a docker container to mitigate "dependency hell". It allows devs to send code to other teams inside of a container with all the required dependencies, which in-theory means the software that runs on your computer will be the software that runs on another person’s computer.
+For this project, Docker was used to containerise the flask application. The app consisted of both the front-end and back-end and both parts needed to be put in a docker container to mitigate "dependency hell". It allows devs to send code to other teams inside of a container with all the required dependencies, which in theory means the software that runs on your computer will be the software that runs on another person’s computer.
 
-The provided application needed to be containerised. This was done through a Dockerfile. The Dockerfile for the front end is shown below. The app is installed upon a python environment along with all the requirements for the apps to run.
+The provided application needed to be containerised. This was done through a Dockerfile. The Dockerfile for the front end is shown below. The app is installed in a python environment along with all the requirements for the apps to run.
 
 ![jenkins-scripts](https://user-images.githubusercontent.com/47571755/114149901-51c18f00-9913-11eb-960e-a0e064f2b8d7.png)
 
